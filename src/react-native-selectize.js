@@ -378,7 +378,8 @@ export default class ReactNativeSelectize extends React.Component {
       tintColor,
       label,
       error,
-      middleComponent
+      middleComponent,
+      accesory
     } = this.props;
     const {
       style: textInputStyleFromProps,
@@ -441,6 +442,12 @@ export default class ReactNativeSelectize extends React.Component {
             selectionColor={tintColor}
             style={textInputStyle}
           />
+          {
+            accesory &&
+            <TouchableOpacity onPress={() => this._onFocus(onFocus)}>
+              {accesory()}
+            </TouchableOpacity>
+          }
         </View>
         {autoReflow && (
           <Text style={hiddenTextStyle} onLayout={this._onLayout}>
